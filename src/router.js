@@ -1,24 +1,43 @@
-import Vue from "vue";
-import Router from "vue-router";
-import Home from "./views/Home.vue";
+import Vue from 'vue'
+import Router, { RouteConfig } from 'vue-router'
+import Login from '@/views/login/Login.vue'
 
-Vue.use(Router);
+Vue.use(Router)
 
-export default new Router({
-  routes: [
-    {
-      path: "/",
-      name: "home",
-      component: Home
-    },
-    {
-      path: "/about",
-      name: "about",
-      // route level code-splitting
-      // this generates a separate chunk (about.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () =>
-        import(/* webpackChunkName: "about" */ "./views/About.vue")
-    }
-  ]
-});
+const router = new Router({
+  mode: 'hash',
+  routes: [],
+})
+
+// Router Navigation Guards
+router.beforeEach((to, from, next) => {
+  /* must call `next` */
+  if (to.matched.length > 0) {
+    // There is a matched route for the navigation to be fulfilled
+    next()
+  } else {
+    // There is no matched route for the navigation to be fulfilled
+    next('/')
+  }
+})
+
+router.beforeResolve((to, from, next) => {
+  /* must call `next` */
+  next()
+})
+
+router.afterEach((to, from) => {
+
+})
+
+export default router
+
+
+export function registerRoutes (routes) {
+  router.addRoutes(routes)
+}
+function importRoutes (r) {
+  r.keys().forEach(r)
+}
+
+importRoutes(require.context('@/views/', true, /route.js$/))

@@ -1,31 +1,46 @@
 <template>
-  <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link>
-    </div>
-    <router-view />
-  </div>
+  <v-app>
+    <!-- TOOLBAR COMPONENT -->
+    <bp-header />
+
+    <!-- ROUTER VIEW COMPONENT -->
+    <v-content>
+      <v-container
+        fluid
+      >
+        <router-view />
+      </v-container>
+    </v-content>
+  </v-app>
 </template>
 
-<style>
-#app {
-  font-family: "Avenir", Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-}
-#nav {
-  padding: 30px;
-}
+<script>
+import BpHeader from '@/components/header/BpHeader.vue'
+import BpDialog from '@/components/dialog/BpDialog.vue'
+import BpForm from '@/components/form/BpForm.vue'
+import { ServiceFactory } from '@/services/serviceFactory'
+import { mapGetters } from 'vuex'
 
-#nav a {
-  font-weight: bold;
-  color: #2c3e50;
-}
+export default {
+  name: 'App',
+  components: {
+    BpHeader
+  },
+  provide () {
+    return {
 
-#nav a.router-link-exact-active {
-  color: #42b983;
+    }
+  },
+  data () {
+    return {
+
+    }
+  },
+  computed: {
+    ...mapGetters(['isAuthenticated'])
+  },
+  methods: {
+
+  }
 }
-</style>
+</script>
