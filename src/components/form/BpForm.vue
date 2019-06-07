@@ -132,18 +132,24 @@
 <script>
 import { Fields } from '@/lib/types/field.js'
 import { props } from './props'
-import BpTimePickerVue from '../formFields/BpTimePicker.vue'
+import BpTextField from '@/components/formFields/BpTextField.vue'
+import BpTextArea from '@/components/formFields/BpTextArea.vue'
+import BpSelectList from '@/components/formFields/BpSelectList.vue'
+import BpToggle from '@/components/formFields/BpToggle.vue'
+import BpDatePicker from '@/components/formFields/BpDatePicker.vue'
+import BpTimePicker from '@/components/formFields/BpTimePicker.vue'
+import BpRadio from '@/components/formFields/BpRadio.vue'
 
 export default {
   name: 'BpForm',
   components: {
-    BpTextField: () => import('@/components/formFields/BpTextField.vue'),
-    BpTextArea: () => import('@/components/formFields/BpTextArea.vue'),
-    BpSelectList: () => import('@/components/formFields/BpSelectList.vue'),
-    BpToggle: () => import('@/components/formFields/BpToggle.vue'),
-    BpDatePicker: () => import('@/components/formFields/BpDatePicker.vue'),
-    BpTimePicker: () => import('@/components/formFields/BpTimePicker.vue'),
-    BpRadio: () => import('@/components/formFields/BpRadio.vue')
+    BpTextField,
+    BpTextArea,
+    BpSelectList,
+    BpToggle,
+    BpDatePicker,
+    BpTimePicker,
+    BpRadio,
   },
   props: props,
   data () {
